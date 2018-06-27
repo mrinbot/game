@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>CARD GAME</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /> 
+
+</head>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+	    <div class="navbar-header">
+           <a class="navbar-brand" href="#">CARDS GAME</a>
+    	</div>
+		
+			    <a href="/game/stack" class="btn btn-danger" role="button">Stack Cards</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="/game/shuffle" class="btn btn-danger" role="button">Shuffle Cards</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="/game/sort" class="btn btn-danger" role="button">Sort Cards</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="/game/sort/color" class="btn btn-danger" role="button">Sort Cards By Color</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="/game/sort/value" class="btn btn-danger" role="button">Sort Cards By Value</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="/game/draw" class="btn btn-danger" role="button">Draw Card</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="/game/drag" class="btn btn-danger" role="button">Drag Cards</a>
+		
+				<a href="/game/" class="class=nav navbar-nav navbar-right btn btn-danger" role="button">Clear Deck</a>
+	    </div>
+</nav>
+
+<body>
+    <br /><br /><br /><br />
+	<div class="container">
+		<img th:src="@{/images/cards.png}"
+			class="img-responsive center-block" width="150" height="150"
+			alt="CARDS" /> <br />
+
+		<div class="alert alert-info">
+			Decks: <strong th:text="${deckSize}"></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Cards Drawn: <strong>See Below</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Total Cards Drawn: <strong th:text="${size}"></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			Total Cards Remaining: <strong th:text="${cardsRemaining}"></strong>
+
+		</div>
+
+		<div>
+
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Suit</th>
+						<th>Rank</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="card : ${cardsDrawn}">
+						<td th:text="${card.suit}"></td>
+						<td th:text="${card.val}"></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+
+	</div>
+
+	<footer class="navbar-default navbar-fixed-bottom">
+		<div class="container text-center">
+			<span>Card Game © 2018 v1.0 </span>
+		</div>
+	</footer>
+</body>
+</html>
